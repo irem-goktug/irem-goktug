@@ -14,6 +14,46 @@
             background-image: url('https://cdn.discordapp.com/attachments/1262691271781126158/1262710254785925181/pattern-7932239_1280.jpg?ex=66979610&is=66964490&hm=062d112ac402cb3eb0810dc0a0a1b773ef75805e2f743db0dabb985e9abf355c&'); /* Arka plan deseni */
         }
 
+        /* Pop-up stil ayarları */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px; /* Padding'i artırarak içeriği genişlet */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            width: 400px; /* Genişliği artır */
+            display: none;
+            z-index: 1000;
+        }
+
+        .popup .options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .popup .options button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* Pop-up arka plan karartma */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
         /* Başlık alanı */
         header {
             background-color: rgba(84, 170, 185, 0.9); /* Açık pembe arka plan */
@@ -142,7 +182,7 @@
             <div class="video">
                 <p>15 Haziran 2024</p>
                 <video width="80%" controls>
-                    <source src="https://cdn.discordapp.com/attachments/1262691271781126158/1262728456098287726/WhatsApp_Video_2024-07-16_saat_14.11.13_6458f728.mp4?ex=6697a704&is=66965584&hm=4b1bd84aea703507201f16b482de6189115cdc8e9f128742e84bd9a920f824ee&" type="video/mp4">
+                    <source src="https://cdn.discordapp.com/attachments/1262691271781126158/1262706576922382379/evlenceeeezz.mp4?ex=669792a3&is=66964123&hm=0448a75e814e4aeb98bc9b43942f3cdf06ad87285d50d4dcb6c31170232f888f&" type="video/mp4">
                     Tarayıcınız video etiketini desteklemiyor.
                 </video>
             </div>
@@ -168,8 +208,86 @@
                     Tarayıcınız video etiketini desteklemiyor.
                 </video>
             </div>
+
             <!-- Diğer fotoğraf ve video öğelerini buraya ekleyebilirsiniz -->
         </div>
     </main>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h2>Balııııııımmm</h2>
+        <p>Aşkııııım özür dileriiiim sen yazmayınca merak ettim ondan canım sıkılmıştı sen yazmadığından. Seni seviyorum</p>
+        <div class="options">
+            <button onclick="option1()">Affediyorum</button>
+            <button onclick="option2()">Affediyorum ama kinder joy alman lazım</button>
+        </div>
+    </div>
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function option1() {
+            alert('Seçenek 1 seçildi!');
+            hidePopup();
+        }
+
+        function option2() {
+            alert('Seçenek 2 seçildi!');
+            hidePopup();
+        }
+
+        // Sayfa yüklendiğinde pop-up'ı göstermek için
+        window.onload = function() {
+            showPopup();
+        }
+        // Discord webhook URL'nizi buraya ekleyin
+const webhookUrl = 'https://discord.com/api/webhooks/1263109112598761542/jXpf6Iv36ykrt2pQl552uzDn2cdz3oZiTs0kDhwJJ26Di3ro3cVGzxui-iv76Np2KJzU';
+
+// Pop-up'ı göstermek için fonksiyon
+function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+}
+
+// Pop-up'ı gizlemek için fonksiyon
+function hidePopup() {
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+
+// Seçenek 1 tıklandığında çalışacak fonksiyon
+function option1() {
+    sendToDiscord('Affediyorum');
+    hidePopup(); 
+}
+
+// Seçenek 2 tıklandığında çalışacak fonksiyon
+function option2() {
+    sendToDiscord('Affediyorum ama kinder joy alman lazım');
+    hidePopup();
+}
+
+// Discord'a mesaj göndermek için fonksiyon
+function sendToDiscord(message) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", webhookUrl, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        content: message
+    }));
+}
+
+// Sayfa yüklendiğinde pop-up'ı göstermek için
+window.onload = function() {
+    showPopup();
+}
+
+    </script>
 </body>
 </html>
